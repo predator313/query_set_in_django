@@ -15,6 +15,6 @@ from .models import Student,Teacher
 def fun(request):
     sq=Student.objects.values_list('id','name',named=True)
     tq=Teacher.objects.values_list('id','name',named=True)
-    combined_data=tq.union(sq)
+    combined_data=tq.difference(sq)
     print('sql query',combined_data.query)
     return render(request,'app/home.html',{'student_data':combined_data})
