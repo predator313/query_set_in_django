@@ -7,4 +7,7 @@ from .models import Student
 #so we use objects.all method to fetch all the record of the data
 def fun(request):
     student_data=Student.objects.all()
+    print('sql query',student_data.query)
     return render(request,'app/home.html',{'student_data':student_data})
+    #we also pass the two method of filter and exclude
+    #same as the sql in and notin method 
