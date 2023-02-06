@@ -12,6 +12,9 @@ from .models import Student,Teacher
     #we also pass the two method of filter and exclude
     #same as the sql in and notin method
     #  
+#we can use ours various django command which is
+#similar to the sql database
+#more familar to the sql lite db
 def fun(request):
     sq=Student.objects.values_list('id','name',named=True)
     tq=Teacher.objects.values_list('id','name',named=True)
