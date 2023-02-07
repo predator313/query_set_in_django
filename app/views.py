@@ -15,9 +15,13 @@ from .models import Student,Teacher
 #we can use ours various django command which is
 #similar to the sql database
 #more familar to the sql lite db
+# def fun(request):
+#     sq=Student.objects.values_list('id','name',named=True)
+#     tq=Teacher.objects.values_list('id','name',named=True)
+#     combined_data=tq.difference(sq)
+#     print('sql query',combined_data.query)
+#     return render(request,'app/home.html',{'student_data':combined_data})
 def fun(request):
-    sq=Student.objects.values_list('id','name',named=True)
-    tq=Teacher.objects.values_list('id','name',named=True)
-    combined_data=tq.difference(sq)
-    print('sql query',combined_data.query)
-    return render(request,'app/home.html',{'student_data':combined_data})
+    student_data=Student.objects.filter(marks__lt=90)
+    print('sql query',student_data.query)
+    return render(request,'app/home.html',{'student_data':student_data})
